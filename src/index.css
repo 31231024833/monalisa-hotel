@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warmDark: #4A3B32;
+  --color-warmPrimary: #D4A373;
+  --color-warmLight: #FAEDCD;
+  --color-bgSoft: #FDFBF7;
+  --color-bgAdmin: #F3F4F6;
+  
+  --font-sans: "Mulish", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
+
+/* Tùy chỉnh thanh cuộn siêu mượt cho Admin (Giống hôm trước tụi mình làm) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-warmPrimary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warmDark);
+}
