@@ -15,7 +15,7 @@ export default function ClientRooms() {
 
   // Nạp danh sách phòng từ Backend thực tế
   useEffect(() => {
-    fetch('http://localhost:8080/api/rooms')
+    fetch('https://monalisa-hotel.onrender.com/api/rooms')
       .then(res => res.json())
       .then(data => {
         setRoomsList(data);

@@ -42,7 +42,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
         role: 'khach_hang' // Mặc định tự đăng ký bên ngoài là khách hàng
       };
 
-      const res = await fetch('http://localhost:8080/api/auth/register', {
+      const res = await fetch('https://monalisa-hotel.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -77,7 +77,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/auth/login', {
+      const res = await fetch('https://monalisa-hotel.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

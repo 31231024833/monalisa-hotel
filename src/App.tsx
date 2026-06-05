@@ -85,7 +85,7 @@ export default function App() {
   // GỌI API THỰC TẾ ĐỂ NẠP DANH SÁCH PHÒNG TỪ DATABASE CLOUD
   // =========================================================================
   useEffect(() => {
-    fetch('http://localhost:8080/api/rooms')
+    fetch('https://monalisa-hotel.onrender.com/api/rooms')
       .then(res => res.json())
       .then(data => {
         setRooms(data);
@@ -99,7 +99,7 @@ export default function App() {
   // GỌI API THỰC TẾ ĐỂ NẠP DANH SÁCH ĐƠN ĐẶT PHÒNG TỪ DATABASE CLOUD
   // =========================================================================
   useEffect(() => {
-    fetch('http://localhost:8080/api/bookings')
+    fetch('https://monalisa-hotel.onrender.com/api/bookings')
       .then(res => res.json())
       .then(data => {
         setBookings(data);
@@ -113,7 +113,7 @@ export default function App() {
   // GỌI API THỰC TẾ ĐỂ NẠP DANH SÁCH HÓA ĐƠN TỪ DATABASE CLOUD
   // =========================================================================
   useEffect(() => {
-    fetch('http://localhost:8080/api/invoices')
+    fetch('https://monalisa-hotel.onrender.com/api/invoices')
       .then(res => res.json())
       .then(data => {
         setInvoices(data);
