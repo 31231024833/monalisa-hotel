@@ -35,27 +35,7 @@ export default function HomePage() {
   return (
     <div className="w-full bg-warmLight text-gray-800 min-h-screen font-sans">
       
-      {/* MENU ĐIỀU HƯỚNG (NAVBAR) */}
-      <nav className="absolute top-0 w-full z-30 px-6 md:px-12 py-4 flex justify-between items-center text-white bg-black bg-opacity-30 backdrop-blur-sm">
-        <div className="text-2xl md:text-3xl font-serif font-bold tracking-widest text-warmPrimary">
-          MONALISA
-        </div>
-        <div className="hidden md:flex space-x-8 text-sm md:text-base font-medium tracking-wide">
-          <Link to="/" className="hover:text-warmPrimary transition duration-300">Trang chủ</Link>
-          <Link to="/rooms" className="hover:text-warmPrimary transition duration-300">Phòng & Đặt phòng</Link>
-          <Link to="/services" className="hover:text-warmPrimary transition duration-300">Dịch vụ</Link>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <Link 
-            to="/auth" 
-            className="flex items-center gap-2 px-5 py-2 bg-warmPrimary text-warmDark font-bold rounded-full hover:bg-white hover:text-warmDark transition-all duration-300 shadow-lg text-sm"
-          >
-            <LogIn className="w-4 h-4" />
-            Đăng nhập
-          </Link>
-        </div>
-      </nav>
+      
 
       {/* 1. HERO SECTION (Ảnh bìa lớn & Tiêu đề) */}
       <header 
@@ -348,43 +328,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CHI TIẾT LIÊN HỆ & CHÂN TRANG (FOOTER) */}
-      <footer className="bg-neutral-900 text-warmLight py-16 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="md:col-span-1">
-            <div className="text-2xl font-serif font-bold tracking-widest text-warmPrimary mb-6">MONALISA</div>
-            <p className="text-sm opacity-80 leading-relaxed font-sans">
-              Nơi dừng chân lý tưởng giữa lòng thành phố, mang đến trải nghiệm nghỉ dưỡng sang trọng, ấm áp cùng dịch vụ chu đáo nhất.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-lg font-serif font-bold mb-6 text-white border-b border-neutral-800 pb-2">Khám phá</h4>
-            <ul className="space-y-3 font-sans text-sm opacity-80">
-              <li><Link to="/about" className="hover:text-warmPrimary transition duration-300">Về chúng tôi</Link></li>
-              <li><Link to="/rooms" className="hover:text-warmPrimary transition duration-300">Tất cả hạng phòng</Link></li>
-              <li><Link to="/services" className="hover:text-warmPrimary transition duration-300">Dịch vụ đặc biệt</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-serif font-bold mb-6 text-white border-b border-neutral-800 pb-2">Chính sách</h4>
-            <ul className="space-y-3 font-sans text-sm opacity-80">
-              <li><a href="#" className="hover:text-warmPrimary transition duration-300">Điều khoản sử dụng</a></li>
-              <li><a href="#" className="hover:text-warmPrimary transition duration-300">Chính sách bảo mật</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-serif font-bold mb-6 text-white border-b border-neutral-800 pb-2">Liên hệ</h4>
-            <ul className="space-y-4 font-sans text-xs md:text-sm opacity-80">
-              <li>📍 59C Nguyễn Đình Chiểu, Phường 6, Quận 3, TP.HCM</li>
-              <li>📞 +84 123 456 789</li>
-              <li>✉️ booking@monalisa.com</li>
-            </ul>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-neutral-800 text-center text-xs opacity-60">
-          &copy; 2026 Khách sạn Monalisa. Thiết kế bởi Sinh viên Thương mại điện tử.
-        </div>
-      </footer>
+    
 
       {/* 7. POPUP CHI TIẾT PHÒNG (REACT MODAL) */}
       {isModalOpen && (

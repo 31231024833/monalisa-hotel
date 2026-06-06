@@ -213,20 +213,7 @@ export default function ClientRooms() {
 
               </div>
 
-              {/* Footer Modal: Giá tiền & Nút Đặt phòng */}
-              <div className="border-t pt-5 mt-6 flex items-center justify-between bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                <div>
-                  <span className="text-gray-500 text-xs">Giá phòng tốt nhất hôm nay:</span>
-                  <p className="text-2xl font-black text-red-600 font-mono mt-0.5">{formatVND(selectedRoom.price)}</p>
-                </div>
-                <Link 
-                  to="/checkout"
-                  onClick={() => setShowDetailModal(false)}
-                  className="px-8 py-3 bg-warmPrimary text-warmDark font-black rounded-xl hover:bg-warmDark hover:text-white transition shadow-md text-xs tracking-wider"
-                >
-                  ĐẶT PHÒNG NGAY
-                </Link>
-              </div>
+          
 
             </div>
           </div>
