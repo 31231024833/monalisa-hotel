@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { BarChart3, BellRing, Briefcase, FileText, Users, LogOut } from 'lucide-react';
+import { BarChart3, BellRing, Briefcase, FileText, Users, LogOut, MessageSquare } from 'lucide-react';
 
 interface SidebarProps {
   userRole: 'khach_hang' | 'nhan_vien' | 'quan_ly';
@@ -32,6 +32,13 @@ export default function Sidebar({ userRole }: SidebarProps) {
         </Link>
 
         {/* ========================================================================= */}
+        {/* BỔ SUNG: KHAI BÁO LIÊN KẾT XỬ LÝ YÊU CẦU (USE CASE 7) CHO NHÂN VIÊN & QUẢN LÝ */}
+        {/* ========================================================================= */}
+        <Link to="/admin/support" className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${location.pathname === '/admin/support' ? 'bg-white bg-opacity-10 text-warmPrimary font-bold' : 'text-gray-300 hover:bg-white hover:bg-opacity-10'}`}>
+          <MessageSquare className="w-4 h-4" /> Xử lý yêu cầu
+        </Link>
+
+        {/* ========================================================================= */}
         {/* PHÂN QUYỀN (CONDITIONAL RENDERING): CHỈ HIỂN THỊ KHI USER LÀ QUẢN LÝ (quan_ly) */}
         {/* ========================================================================= */}
         {userRole === 'quan_ly' && (
@@ -39,12 +46,9 @@ export default function Sidebar({ userRole }: SidebarProps) {
             <div className="pt-4 mt-4 border-t border-stone-700">
               <p className="px-4 text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Đặc quyền Quản lý</p>
               
-              {/* Đã loại bỏ số 11. */}
               <Link to="/admin/employees" className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${location.pathname === '/admin/employees' ? 'bg-white bg-opacity-10 text-warmPrimary font-bold' : 'text-gray-300 hover:bg-white hover:bg-opacity-10'}`}>
                 <Users className="w-4 h-4" /> Quản lý Nhân sự
               </Link>
-              
-              {/* Đã loại bỏ số 12. */}
               <Link to="/admin/reports" className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${location.pathname === '/admin/reports' ? 'bg-white bg-opacity-10 text-warmPrimary font-bold' : 'text-gray-300 hover:bg-white hover:bg-opacity-10'}`}>
                 <BarChart3 className="w-4 h-4" /> Quản lý Báo cáo
               </Link>
@@ -53,7 +57,7 @@ export default function Sidebar({ userRole }: SidebarProps) {
         )}
       </nav>
 
-      {/* UC 3: Quản lý tài khoản cá nhân - Đặt nút Cài đặt tài khoản ở góc dưới Sidebar */}
+      {/* UC 3: Quản lý tài khoản cá nhân */}
       <div className="p-4 border-t border-stone-700">
         <Link to="/admin/settings" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 text-white transition mb-2">
           <div className="w-8 h-8 rounded-full bg-warmPrimary text-warmDark flex items-center justify-center font-bold">Q</div>
