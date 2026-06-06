@@ -184,8 +184,17 @@ export default function Overview({
                   const b = booking as any;
                   const guestName = b.guestName || b.customerName || "Khách ẩn danh";
                   const phone = b.phone || b.customerPhone || "Không có SĐT";
-                  const checkInDate = b.checkIn || b.startDate || "N/A";
-                  const checkOutDate = b.checkOut || b.endDate || "N/A";
+                 const formatToVN = (dateStr: string) => {
+  if (!dateStr || dateStr === "N/A") return "N/A";
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    return `${parts[2]}/${parts[1]}/${parts[0]}`; // Chuyển đổi định dạng thành DD/MM/YYYY
+  }
+  return dateStr;
+};
+
+const checkInDate = formatToVN(b.checkIn || b.startDate || "N/A");
+const checkOutDate = formatToVN(b.checkOut || b.endDate || "N/A");
 
                   return (
                     <tr key={booking.id || index} className="hover:bg-gray-50/50 transition">

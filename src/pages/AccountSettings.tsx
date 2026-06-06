@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 export default function AccountSettings() {
   const [activeTab, setActiveTab] = useState<'profile' | 'password' | 'roles'>('profile');
 
   return (
-    <div className="min-h-screen flex flex-col bg-bgSoft">
-      <Navbar />
+    <div className="w-full bg-bgSoft">
+      {/* ĐÃ XÓA KHAI BÁO <Navbar /> TOÀN CỤC Ở ĐÂY ĐỂ ĐỒNG BỘ LAYOUT */}
 
-      <main className="max-w-6xl mx-auto px-4 md:px-6 py-32 flex-grow flex flex-col md:flex-row gap-8 w-full">
+      <main className="max-w-6xl mx-auto px-4 md:px-6 py-12 flex-grow flex flex-col md:flex-row gap-8 w-full">
         
         {/* Cột trái: Tab điều hướng */}
         <aside className="w-full md:w-64 flex-shrink-0">
@@ -36,7 +34,7 @@ export default function AccountSettings() {
                 onClick={() => setActiveTab('roles')}
                 className={`w-full text-left px-4 py-3 rounded-lg transition border-t-2 border-dashed border-gray-200 mt-2 ${activeTab === 'roles' ? 'bg-warmPrimary text-warmDark font-bold shadow-xs' : 'bg-gray-50 hover:bg-gray-100'}`}
               >
-                🛡️ Phân quyền (Admin)
+                🛡️ Phân quyền {/* ĐÃ XÓA CHỮ (ADMIN) GÂY THỪA THÃI */}
               </button>
             </nav>
           </div>
@@ -61,11 +59,11 @@ export default function AccountSettings() {
                   </div>
                   <div>
                     <label className="block text-gray-600 font-semibold mb-2">Số điện thoại</label>
-                    <input type="text" defaultValue="0988 765 432" className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary" />
+                    <input type="text" defaultValue="0988 765 432" className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary font-sans" />
                   </div>
                   <div>
                     <label className="block text-gray-600 font-semibold mb-2">Email</label>
-                    <input type="email" value="quang.hn@student.ueh.edu.vn" disabled className="w-full border border-gray-200 bg-gray-50 rounded-lg p-3 outline-none text-gray-400 cursor-not-allowed" />
+                    <input type="email" value="quang.hn@student.ueh.edu.vn" disabled className="w-full border border-gray-200 bg-gray-50 rounded-lg p-3 outline-none text-gray-400 cursor-not-allowed font-sans" />
                     <p className="text-[10px] text-gray-400 mt-1">Email tài khoản không thể thay đổi</p>
                   </div>
                   <div className="md:col-span-2">
@@ -89,15 +87,15 @@ export default function AccountSettings() {
               <div className="space-y-4 max-w-md">
                 <div>
                   <label className="block text-gray-600 font-semibold mb-2">Mật khẩu hiện tại</label>
-                  <input type="password" placeholder="Nhập mật khẩu cũ..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary" />
+                  <input type="password" placeholder="Nhập mật khẩu cũ..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary font-sans" />
                 </div>
                 <div>
                   <label className="block text-gray-600 font-semibold mb-2">Mật khẩu mới</label>
-                  <input type="password" placeholder="Tối thiểu 8 ký tự..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary" />
+                  <input type="password" placeholder="Tối thiểu 8 ký tự..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary font-sans" />
                 </div>
                 <div>
                   <label className="block text-gray-600 font-semibold mb-2">Xác nhận mật khẩu mới</label>
-                  <input type="password" placeholder="Nhập lại mật khẩu mới..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary" />
+                  <input type="password" placeholder="Nhập lại mật khẩu mới..." className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-warmPrimary font-sans" />
                 </div>
                 <div className="pt-4 flex justify-end">
                   <button onClick={() => alert('Cập nhật mật khẩu thành công!')} className="px-8 py-3 bg-warmPrimary text-warmDark font-bold rounded-lg hover:bg-yellow-600 transition shadow-xs text-xs">
@@ -108,12 +106,12 @@ export default function AccountSettings() {
             </div>
           )}
 
-          {/* TAB 3: PHÂN QUYỀN TRUY CẬP (Chỉ dành cho Quản lý) */}
+          {/* TAB 3: PHÂN QUYỀN TRUY CẬP */}
           {activeTab === 'roles' && (
             <div className="bg-white rounded-2xl shadow-xs border border-gray-100 p-8 animate-fade-in">
               <div className="flex justify-between items-center border-b pb-4 mb-6">
                 <h2 className="text-xl md:text-2xl font-bold text-warmDark font-serif">Phân Quyền Truy Cập</h2>
-                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-bold border border-red-200">Khu vực Admin</span>
+                <span className="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold border border-amber-200">Khu vực Quản trị</span>
               </div>
               
               <div className="flex gap-3 mb-6">
@@ -154,7 +152,7 @@ export default function AccountSettings() {
         </section>
       </main>
 
-      <Footer />
+      {/* ĐÃ XÓA KHAI BÁO <Footer /> TOÀN CỤC Ở ĐÂY ĐỂ ĐỒNG BỘ LAYOUT */}
     </div>
   );
 }
