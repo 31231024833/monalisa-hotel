@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { BarChart3, BellRing, Briefcase, FileText, Users, Settings, LogOut } from 'lucide-react';
+import { BarChart3, BellRing, Briefcase, FileText, Users, LogOut } from 'lucide-react';
 
 interface SidebarProps {
   userRole: 'khach_hang' | 'nhan_vien' | 'quan_ly';
@@ -39,11 +39,14 @@ export default function Sidebar({ userRole }: SidebarProps) {
             <div className="pt-4 mt-4 border-t border-stone-700">
               <p className="px-4 text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Đặc quyền Quản lý</p>
               
+              {/* Đã loại bỏ số 11. */}
               <Link to="/admin/employees" className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${location.pathname === '/admin/employees' ? 'bg-white bg-opacity-10 text-warmPrimary font-bold' : 'text-gray-300 hover:bg-white hover:bg-opacity-10'}`}>
-                <Users className="w-4 h-4" /> 11. Quản lý Nhân sự
+                <Users className="w-4 h-4" /> Quản lý Nhân sự
               </Link>
+              
+              {/* Đã loại bỏ số 12. */}
               <Link to="/admin/reports" className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${location.pathname === '/admin/reports' ? 'bg-white bg-opacity-10 text-warmPrimary font-bold' : 'text-gray-300 hover:bg-white hover:bg-opacity-10'}`}>
-                <BarChart3 className="w-4 h-4" /> 12. Quản lý Báo cáo
+                <BarChart3 className="w-4 h-4" /> Quản lý Báo cáo
               </Link>
             </div>
           </>
