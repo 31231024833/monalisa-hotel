@@ -1,6 +1,3 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-
 export default function ClientServices() {
   const servicesList = [
     {
@@ -30,8 +27,8 @@ export default function ClientServices() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-bgSoft">
-      <Navbar />
+    <div className="w-full bg-bgSoft">
+      {/* KHÔNG gọi <Navbar /> ở đây vì đã có CustomerLayout lo */}
 
       {/* Banner trên cùng */}
       <div className="relative h-64 bg-cover bg-center flex items-center justify-center pt-24" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80')" }}>
@@ -71,7 +68,7 @@ export default function ClientServices() {
         ))}
       </main>
 
-      <Footer />
+      {/* KHÔNG gọi <Footer /> ở đây vì đã có CustomerLayout lo */}
     </div>
   );
 }

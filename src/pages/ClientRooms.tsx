@@ -4,8 +4,6 @@ import {
   Users, ShieldCheck, X, Sparkles, MapPin, 
   Tv, Wind, Coffee, Lock, Bath, CheckCircle2, AlertCircle 
 } from 'lucide-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import type { Room } from '../types';
 
 export default function ClientRooms() {
@@ -37,8 +35,8 @@ export default function ClientRooms() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-bgSoft">
-      <Navbar />
+    <div className="w-full bg-bgSoft">
+      {/* KHÔNG gọi <Navbar /> ở đây nữa vì đã có CustomerLayout lo */}
 
       {/* Banner tiêu đề */}
       <div className="bg-warmLight py-12 pt-32 text-center border-b border-gray-200">
@@ -52,7 +50,7 @@ export default function ClientRooms() {
         
         {/* Bộ lọc bên trái */}
         <aside className="w-full lg:w-64 flex-shrink-0">
-          <div className="bg-white rounded-2xl shadow-xs border border-gray-100 p-6 sticky top-24 text-xs md:text-sm">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24 text-xs md:text-sm">
             <h3 className="font-bold text-base text-warmDark mb-4 border-b pb-2 font-serif">Lọc Tìm Kiếm</h3>
             
             <div className="mb-6">
@@ -220,7 +218,7 @@ export default function ClientRooms() {
         </div>
       )}
 
-      <Footer />
+      {/* KHÔNG gọi <Footer /> ở đây nữa vì đã có CustomerLayout lo */}
     </div>
   );
 }
