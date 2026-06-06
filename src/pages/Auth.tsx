@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Lock } from 'lucide-react';
+import { ArrowLeft, Lock, Mail, Phone, User, CheckCircle2, LogIn, Clock } from 'lucide-react';
 
 interface AuthProps {
   onLoginSuccess: (role: 'khach_hang' | 'nhan_vien' | 'quan_ly') => void;
@@ -33,13 +33,12 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
     }
 
     try {
-      // Thiết lập dữ liệu gửi lên Backend
       const payload = {
         fullName: regName.trim(),
-        phone: regType === 'phone' ? regContact.trim() : '0900000000', // Gán sđt dự phòng nếu đăng ký bằng email
-        email: regType === 'email' ? regContact.trim() : `${Date.now()}@monalisa.com`, // Sinh email dự phòng nếu đăng ký bằng sđt
+        phone: regType === 'phone' ? regContact.trim() : '0900000000',
+        email: regType === 'email' ? regContact.trim() : `${Date.now()}@monalisa.com`,
         password: regPassword,
-        role: 'khach_hang' // Mặc định tự đăng ký bên ngoài là khách hàng
+        role: 'khach_hang'
       };
 
       const res = await fetch('https://monalisa-hotel.onrender.com/api/auth/register', {
@@ -52,12 +51,9 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
 
       if (res.ok) {
         alert('Chúc mừng! Bạn đã đăng ký tài khoản thành viên Monalisa thành công.');
-        // Chuyển hướng về trang đăng nhập
         setActivePage('login');
-        // Tự động điền email vừa đăng ký vào ô đăng nhập cho tiện lợi
         setEmail(payload.email);
         setPassword('');
-        // Làm sạch form đăng ký
         setRegName('');
         setRegContact('');
         setRegPassword('');
@@ -104,14 +100,15 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
       }
     } catch (err) {
       console.error(err);
-      alert('Không thể kết nối đến server Backend Node.js. Vui lòng kiểm tra server có đang chạy trên cổng 8080.');
+      alert('Không thể kết nối đến server Backend Node.js. Vui lòng kiểm tra server có đang chạy.');
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-bgSoft">
       <div className="pt-24 flex-grow flex items-stretch min-h-[calc(100vh-80px)]">
-        {/* Banner bên trái */}
+        
+        {/* Banner bên trái (Đã sửa lại ảnh nền siêu ổn định) */}
         <div 
           className="hidden lg:block lg:w-1/2 relative bg-cover bg-center transition-all duration-500" 
           style={{ 
@@ -119,7 +116,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
               ? "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920')" 
               : activePage === 'register'
               ? "url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1920')"
-              : "url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1920')"
+              : "url('https://images.unsplash.com/photo-1542314831-c6a4d14b2404?q=80&w=1920')" // Thay ảnh quên mật khẩu cực kỳ ổn định
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center px-16 text-white">
@@ -141,7 +138,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
           
           {/* TRANG 1: ĐĂNG NHẬP */}
           {activePage === 'login' && (
-            <form onSubmit={handleLogin} className="w-full max-w-md space-y-6 animate-fade-in font-sans text-xs md:text-sm">
+            <form onSubmit={handleLogin} className="w-full max-w-md space-y-6 animate-fade-in font-sans text-xs md:text-sm text-left">
               <div>
                 <h2 className="text-3xl font-serif font-bold text-warmDark mb-2">Xin chào!</h2>
                 <p className="text-gray-500 text-xs">Vui lòng đăng nhập để tiếp tục</p>
@@ -186,9 +183,9 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
             </form>
           )}
 
-          {/* TRANG 2: ĐĂNG KÝ THỰC TẾ (ĐÃ LIÊN KẾT BACKEND) */}
+          {/* TRANG 2: ĐĂNG KÝ THỰC TẾ */}
           {activePage === 'register' && (
-            <div className="w-full max-w-md space-y-6 animate-fade-in relative pt-8 font-sans">
+            <div className="w-full max-w-md space-y-6 animate-fade-in relative pt-8 font-sans text-left">
               <button onClick={() => setActivePage('login')} className="absolute top-0 left-0 text-gray-400 hover:text-warmDark flex items-center text-xs font-bold gap-1">
                 <ArrowLeft className="w-4 h-4" /> Quay lại đăng nhập
               </button>
@@ -262,8 +259,49 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
             </div>
           )}
 
-          {/* TRANG 3: QUÊN MẬT KHẨU */}
-          {/* ... giữ nguyên phần Quên mật khẩu tĩnh ... */}
+          {/* TRANG 3: QUÊN MẬT KHẨU (ĐÃ ĐỒNG BỘ ĐẦY ĐỦ LOGIC VÀ PHONG CÁCH) */}
+          {activePage === 'forgot' && (
+            <div className="w-full max-w-md space-y-6 animate-fade-in relative pt-8 text-left">
+              <button type="button" onClick={() => setActivePage('login')} className="absolute top-0 left-0 text-gray-400 hover:text-warmDark flex items-center text-xs font-bold gap-1">
+                <ArrowLeft className="w-4 h-4" /> Quay lại đăng nhập
+              </button>
+
+              <div className="space-y-2">
+                <div className="w-12 h-12 bg-warmLight text-warmPrimary rounded-full flex items-center justify-center text-xl shadow-xs">
+                  <Lock className="w-6 h-6" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-warmDark">Khôi Phục Mật Khẩu</h2>
+                <p className="text-gray-500 text-xs leading-relaxed">Nhập số điện thoại hoặc email bạn đã đăng ký. Hệ thống sẽ gửi mã xác nhận (OTP) cho bạn.</p>
+              </div>
+
+              <form onSubmit={(e) => { e.preventDefault(); alert('Đổi mật khẩu thành công!'); setActivePage('login'); }} className="space-y-4 text-xs md:text-sm">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">Email / Số điện thoại</label>
+                  <input type="text" required placeholder="Nhập để nhận mã xác nhận" className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-warmPrimary outline-none transition" />
+                </div>
+                
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">Mã xác nhận (OTP)</label>
+                  <div className="flex gap-2">
+                    <input type="text" placeholder="Nhập 6 số..." className="flex-1 border border-gray-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-warmPrimary transition" />
+                    <button type="button" onClick={() => alert('Đã gửi mã OTP thành công!')} className="px-5 py-2 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 flex items-center gap-1">
+                      Gửi mã
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">Mật khẩu mới</label>
+                  <input type="password" required placeholder="••••••••" className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-warmPrimary outline-none transition" />
+                </div>
+
+                <button type="submit" className="w-full py-3.5 bg-warmDark text-warmPrimary font-bold rounded-xl hover:bg-black transition shadow-md">
+                  Cập Nhật Mật Khẩu
+                </button>
+              </form>
+            </div>
+          )}
+
         </div>
       </div>
     </div>

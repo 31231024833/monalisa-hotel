@@ -237,8 +237,18 @@ export default function BookingManagement({
                         <p className="text-[10px] text-slate-400">SĐT: {guest.phone}</p>
                       </td>
                       <td className="py-3.5 px-4 font-mono text-xs">
-                        {b.checkInDate} &rarr; {b.checkOutDate}
-                      </td>
+  {(() => {
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return "N/A";
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        return `${parts[2]}/${parts[1]}/${parts[0]}`; // Định dạng thành DD/MM/YYYY
+      }
+      return dateStr;
+    };
+    return `${formatDate(b.checkInDate)} → ${formatDate(b.checkOutDate)}`;
+  })()}
+</td>
                       <td className="py-3.5 px-4 text-center font-mono font-semibold text-indigo-600">
                         {b.servicesUsed.reduce((sum: number, s: any) => sum + s.quantity, 0)} sản phẩm
                       </td>
